@@ -3,12 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(Hello("Jose"))
+	fmt.Println(Hello("Jose", "Spanish"))
 }
 
-func Hello(name string) string {
+func Hello(name string, lang string) string {
+	greeting := "Hello"
 	if name == "" {
 		name = "world"
 	}
-	return "Hello, " + name
+	if lang == "Spanish" {
+		greeting = "Hola"
+	}
+	return greeting + ", " + name
 }
