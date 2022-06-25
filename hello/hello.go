@@ -7,12 +7,20 @@ func main() {
 }
 
 func Hello(name string, lang string) string {
-	greeting := "Hello"
+	greeting := prefix(lang)
 	if name == "" {
 		name = "world"
 	}
-	if lang == "Spanish" {
-		greeting = "Hola"
-	}
 	return greeting + ", " + name
+}
+
+func prefix(lang string) string {
+	switch lang {
+	case "Spanish":
+		return "Hola"
+	case "French":
+		return "Bonjour"
+	default: // English
+		return "Hello"
+	}
 }
