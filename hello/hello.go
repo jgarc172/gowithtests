@@ -1,9 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
-	fmt.Println(Hello("Jose", "Spanish"))
+	if len(os.Args) != 3 {
+		fmt.Println("usage: provide two arguments")
+		os.Exit(1)
+	}
+	fmt.Println(Hello(os.Args[1], os.Args[2]))
 }
 
 func Hello(name string, lang string) string {
