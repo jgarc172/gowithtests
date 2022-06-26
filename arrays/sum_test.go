@@ -1,6 +1,9 @@
 package integers
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSum(t *testing.T) {
 	for _, c := range cases() {
@@ -19,6 +22,17 @@ func TestSumSlice(t *testing.T) {
 			got := SumSlice(c.nums)
 			if got != c.sum {
 				t.Errorf("got '%d', but want '%d', given '%v'", got, c.sum, c.nums)
+			}
+		})
+	}
+}
+
+func TestSumVar(t *testing.T) {
+	for _, c := range cases3() {
+		t.Run(c.name, func(t *testing.T) {
+			got := SumVar(c.nums...)
+			if !reflect.DeepEqual(got, c.sums) {
+				t.Errorf("got '%d', but want '%d', given '%v'", got, c.sums, c.nums)
 			}
 		})
 	}
@@ -49,5 +63,25 @@ func cases2() []test2 {
 		{"empty", []int{}, 0},
 		{"positive", []int{1, 0, -1, 2, 3}, 5},
 		{"negative", []int{1, 0, -1, 2, -3}, -1},
+	}
+}
+
+type test3 struct {
+	name string
+	sums []int
+	nums [][]int
+}
+
+func cases3() []test3 {
+	return []test3{
+		{"none", nil, nil},
+		{"one empty", []int{5, 0}, [][]int{
+			{1, 0, -1, 2, 3},
+			{},
+		}},
+		{"none empty", []int{1, 5}, [][]int{
+			{1},
+			{1, 0, -1, 2, 3},
+		}},
 	}
 }

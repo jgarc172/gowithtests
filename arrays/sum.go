@@ -16,3 +16,13 @@ func SumSlice(nums []int) (sum int) {
 	}
 	return sum
 }
+
+// SumVar returns the sums for each slice in numSlices
+// if numsSlices is nil, sums is nil
+func SumVar(numsSlices ...[]int) (sums []int) {
+	for _, nums := range numsSlices {
+		sum := SumSlice(nums)
+		sums = append(sums, sum)
+	}
+	return sums
+}
