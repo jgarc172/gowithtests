@@ -8,8 +8,8 @@ func Sum(nums [5]int) (sum int) {
 	return sum
 }
 
-// SumAll returns the sum of nums slice
-func SumAll(nums []int) (sum int) {
+// SumSlice returns the sum of nums slice
+func SumSlice(nums []int) (sum int) {
 	l := len(nums)
 	for i := 0; i < l; i++ {
 		sum += nums[i]

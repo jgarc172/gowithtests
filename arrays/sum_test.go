@@ -13,10 +13,10 @@ func TestSum(t *testing.T) {
 	}
 }
 
-func TestSumAll(t *testing.T) {
+func TestSumSlice(t *testing.T) {
 	for _, c := range cases2() {
 		t.Run(c.name, func(t *testing.T) {
-			got := SumAll(c.nums)
+			got := SumSlice(c.nums)
 			if got != c.sum {
 				t.Errorf("got '%d', but want '%d', given '%v'", got, c.sum, c.nums)
 			}
