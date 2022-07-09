@@ -26,3 +26,16 @@ func SumVar(numsSlices ...[]int) (sums []int) {
 	}
 	return sums
 }
+
+func SumTail(numsSlices ...[]int) (sums []int) {
+	var sum int
+	for _, nums := range numsSlices {
+		if len(nums) > 0 {
+			sum = SumSlice(nums[1:])
+		} else {
+			sum = SumSlice(nums)
+		}
+		sums = append(sums, sum)
+	}
+	return sums
+}
