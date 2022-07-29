@@ -6,15 +6,18 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func main() {
 	command := Command(os.Args)
+	fmt.Println("will execute", strings.Join(command, " "))
 	err := Run(command, os.Stdin, os.Stdout, os.Stderr)
 	if err != nil {
 		fmt.Printf("command '%v` failed: '%v'\n", command, err)
 		os.Exit(1)
 	}
+	fmt.Println("completed command", command[0])
 }
 
 func Command(args []string) (command []string) {
